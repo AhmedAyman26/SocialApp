@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget defaultButton({
   double width = double.infinity,
-  Color background = Colors.lightBlue,
+  Color background = Colors.green,
   bool isUpperCase = true,
   double radius=3.0,
   required Function function,

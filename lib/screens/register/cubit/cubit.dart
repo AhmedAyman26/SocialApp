@@ -42,14 +42,12 @@ class SocialRegisterCubit extends Cubit<SocialRegisterStates>{
     }).catchError((e)
       {
         if (e.code == 'weak-password') {
-          Navigator.of(context).pop();
           AwesomeDialog(
               context: context,
               title: "Error",
               body: Text("Password is to weak"))
             ..show();
         } else if (e.code == 'email-already-in-use') {
-          Navigator.of(context).pop();
           AwesomeDialog(
               context: context,
               title: "Error",

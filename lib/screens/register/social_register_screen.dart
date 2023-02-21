@@ -4,6 +4,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:socialapp/screens/login/social_login_screen.dart';
 import 'package:socialapp/screens/register/cubit/cubit.dart';
 import 'package:socialapp/screens/register/cubit/states.dart';
 import 'package:socialapp/screens/social_layout/layout.dart';
@@ -25,9 +26,9 @@ class SocialRegisterScreen extends StatelessWidget {
       child: BlocConsumer<SocialRegisterCubit, SocialRegisterStates>(
         listener: (context, state)
         {
-          if(state is SocialRegisterSuccesState)
+          if(state is SocialCreateUserSuccessState)
           {
-            navigateAndFinish(context, SocialLayout());
+            navigateAndFinish(context, SocialLoginScreen());
           }
         },
         builder: (context, state) {
@@ -132,17 +133,17 @@ class SocialRegisterScreen extends StatelessWidget {
                                 height: 20,
                               ),
                                     defaultButton(
-                                    function: () async {
+                                    function: ()async
+                                    {
                                       if(formKey.currentState!.validate())
                                       {
-                                        showLoading(context);
                                         cubit.userRegister(
                                             email: emailController.text,
                                             name: nameController.text,
                                             password: passwordController.text,
                                             phone: phoneController.text,
                                           context: context
-                                        );
+                                        ) ;
                                       }
                                     },
                                     text: 'REGISTER',
